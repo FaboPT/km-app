@@ -47,4 +47,9 @@ class VehicleRepository extends BaseRepository
         return $this->vehicle->findOrFail($id)->delete();
 
     }
+
+    public function find(int $id): model
+    {
+        return $this->vehicle->findOrFail($id);
+    }
 }

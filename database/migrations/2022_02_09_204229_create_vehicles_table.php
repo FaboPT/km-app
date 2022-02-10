@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->year('year_date');
             $table->float('avg_consume', 5, 2);
             $table->string('make');
+            $table->string('model');
             $table->string('url_photo');
             $table->timestamps();
             $table->softDeletes();

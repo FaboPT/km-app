@@ -2,39 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Vehicle\VehicleStoreRequest;
+use App\Services\VehicleService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class VehicleController extends Controller
 {
+    private VehicleService $vehicleService;
+
+    public function __construct(VehicleService $vehicleService)
+    {
+        $this->vehicleService = $vehicleService;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
-
+        $items = $this->vehicleService->all();
+        return view('vehicles.index', compact('items'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function create()
     {
-        //
+        return view('vehicles.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param VehicleStoreRequest $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(VehicleStoreRequest $request): RedirectResponse
     {
-        //
+        return $this->vehicleService->store($request->all());
     }
 
     /**
@@ -52,11 +64,12 @@ class VehicleController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function edit($id)
     {
-        //
+        $item = $this->vehicleService->edit($id);
+        return view('vehicles.edit', compact('item'));
     }
 
     /**
