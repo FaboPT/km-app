@@ -46,6 +46,11 @@ class VehicleController extends Controller
      */
     public function store(VehicleStoreRequest $request): RedirectResponse
     {
+        if($request->hasFile('photo') && !$request->url_photo)
+        {
+            $path = $this->vehicleService->pathPhoto($request->photo);
+            $request->merge(['url_photo'=>$path]);
+        }
         return $this->vehicleService->store($request->all());
     }
 

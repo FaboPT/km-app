@@ -6,7 +6,9 @@ use App\Repositories\VehicleRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
+use Mimey\MimeTypes;
 
 class VehicleService extends BaseService
 {
@@ -30,14 +32,11 @@ class VehicleService extends BaseService
      */
     public function store(array $data): RedirectResponse
     {
-        dd($data);
         DB::transaction(function () use (&$data) {
             $this->vehicleRepository->store($data);
         });
         flash()->success('Vehicle successfully created')->important();
         return redirect()->route('vehicles.index');
-
-
     }
 
     /**
@@ -59,5 +58,11 @@ class VehicleService extends BaseService
     public function edit(int $id): Model
     {
         return $this->vehicleRepository->find($id);
+    }
+
+    public function pathPhoto(UploadedFile  $photo): string
+    {
+        $name= $photo->getFilename().'.'.$photo->clientExtension();
+        return $photo->storeAs('images',$name);
     }
 }

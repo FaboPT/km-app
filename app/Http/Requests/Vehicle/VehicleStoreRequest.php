@@ -29,8 +29,8 @@ class VehicleStoreRequest extends FormRequest
             'make' => 'required | string | max:255',
             'model' => 'required | string | max:255',
             'avg_consume' => 'required | numeric',
-            'photo' => 'nullable | image | mimes:jpg, jpeg, png, bmp, gif, svg,webp',
-            'url_photo' => 'required_without:photo | url'
+            'photo' => 'nullable| image | mimetypes:image/png,image/jpg',
+            'url_photo' => 'nullable | url'
         ];
     }
 }

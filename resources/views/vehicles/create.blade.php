@@ -15,7 +15,8 @@
                  'route'=>['vehicles.store'],
                  'method'=>'POST',
                  'accept-charset'=>'UTF-8',
-                 'class'=>'form-horizontal'
+                 'class'=>'form-horizontal',
+                 'enctype'=>"multipart/form-data"
          ])}}
 
 
@@ -62,14 +63,14 @@
             <div class="form-group row">
                 {{Form::label('photo','Photo:',['class'=>'col-lg-2 col-form-label'])}}
                 <div class="col-lg-10">
-                    {{Form::File('photo',['class'=>'form-control','placeholder'=>'Photo'])}}
+                    {{Form::file('photo',['class'=>'form-control','placeholder'=>'Photo'])}}
                 </div>
             </div>
 
             <div class="form-group row">
                 {{Form::label('url_photo','Url Photo:',['class'=>'col-lg-2 col-form-label'])}}
                 <div class="col-lg-10">
-                    {{Form::text('url_photo','https://', ['class'=>'form-control'])}}
+                    {{Form::text('url_photo',null, ['class'=>'form-control','placeholder'=>'https://example.com'])}}
                 </div>
             </div>
 
