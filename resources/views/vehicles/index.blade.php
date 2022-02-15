@@ -95,7 +95,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-outline-danger" id="delete-task">Delete</button>
+                    <button type="button" class="btn btn-outline-danger" id="delete-vehicle">Delete</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -118,7 +118,9 @@
                     }
                 })
                     .done(function () {
-                        location.reload();
+                        $("#deleteVehicleModal").modal('hide');
+                        $('#tr_' + trid).hide('slow');
+
                     })
                     .fail(function () {
                         alert("error");

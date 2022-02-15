@@ -36,7 +36,7 @@ class VehicleRepository extends BaseRepository
      */
     public function update(int $id, array $attributes): bool
     {
-        return $this->vehicle->findOrFail($id)->update($attributes);
+        return $this->find($id)->update($attributes);
     }
 
     /**
@@ -44,7 +44,7 @@ class VehicleRepository extends BaseRepository
      */
     public function destroy(int $id): bool
     {
-        return $this->vehicle->findOrFail($id)->delete();
+        return $this->find($id)->delete();
 
     }
 

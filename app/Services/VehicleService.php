@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
-use Mimey\MimeTypes;
 
 class VehicleService extends BaseService
 {
@@ -52,7 +51,10 @@ class VehicleService extends BaseService
      */
     public function destroy(int $id): bool
     {
-        // TODO: Implement destroy() method.
+        DB::transaction(function () use (&$id) {
+            $this->vehicleRepository->destroy($id);
+        });
+        return true;
     }
 
     public function edit(int $id): Model

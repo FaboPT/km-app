@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Vehicle\VehicleStoreRequest;
+use App\Http\Requests\Vehicle\VehicleUpdateRequest;
 use App\Services\VehicleService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class VehicleController extends Controller
@@ -33,7 +33,7 @@ class VehicleController extends Controller
      *
      * @return View
      */
-    public function create()
+    public function create(): View
     {
         return view('vehicles.create');
     }
@@ -58,9 +58,9 @@ class VehicleController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function show($id)
+    public function show(int $id): View
     {
         //
     }
@@ -71,7 +71,7 @@ class VehicleController extends Controller
      * @param int $id
      * @return View
      */
-    public function edit($id)
+    public function edit(int $id): View
     {
         $item = $this->vehicleService->edit($id);
         return view('vehicles.edit', compact('item'));
@@ -80,11 +80,11 @@ class VehicleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param VehicleUpdateRequest $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(VehicleUpdateRequest $request, int $id): RedirectResponse
     {
         //
     }
@@ -93,10 +93,10 @@ class VehicleController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return bool
      */
-    public function destroy($id)
+    public function destroy(int $id): bool
     {
-        //
+        return $this->vehicleService->destroy($id);
     }
 }
