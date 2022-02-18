@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-2">
             <h2>
-                <a href="{{route('vehicles.create')}}" type="button" class="btn btn-success float-right "><i
+                <a href="{{route('vehicles.create')}}" type="button" class="btn btn-outline-success float-right "><i
                         class="nav-icon fas fa-plus-square"></i> {{__('vehicles.create')}}</a>
             </h2>
         </div>

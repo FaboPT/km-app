@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
 
@@ -29,6 +28,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/{id}', 'edit')->name('vehicles.edit');
         Route::put('/{id}', 'update')->name('vehicles.update');
         Route::delete('/{id}', 'destroy')->name('vehicles.destroy');
+    });
+
+    Route::controller(HomeController::class)->group(function () {
+        Route::get('/', 'index')->name('home');
+        Route::post('/search-trip', 'search')->name('search');
+
     });
 });
 

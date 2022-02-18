@@ -18,7 +18,8 @@ return new class extends Migration {
             $table->float('avg_consume', 5, 2);
             $table->string('make');
             $table->string('model');
-            $table->string('url_photo');
+            $table->string('url_photo')->nullable();
+            $table->integer('tank_capacity');
             $table->timestamps();
             $table->softDeletes();
         });

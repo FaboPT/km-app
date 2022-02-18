@@ -16,7 +16,7 @@
                  'method'=>'POST',
                  'accept-charset'=>'UTF-8',
                  'class'=>'form-horizontal',
-                 'enctype'=>"multipart/form-data"
+                 'files'=> true
          ])}}
 
 

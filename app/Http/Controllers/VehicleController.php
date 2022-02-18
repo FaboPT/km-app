@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Vehicle\VehicleStoreRequest;
 use App\Http\Requests\Vehicle\VehicleUpdateRequest;
 use App\Services\VehicleService;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
 
 class VehicleController extends Controller
 {
@@ -20,9 +20,9 @@ class VehicleController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return View
+     * @return Renderable
      */
-    public function index(): View
+    public function index(): Renderable
     {
         $items = $this->vehicleService->all();
         return view('vehicles.index', compact('items'));
@@ -31,9 +31,9 @@ class VehicleController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return View
+     * @return Renderable
      */
-    public function create(): View
+    public function create(): Renderable
     {
         return view('vehicles.create');
     }
@@ -58,9 +58,9 @@ class VehicleController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return View
+     * @return Renderable
      */
-    public function show(int $id): View
+    public function show(int $id): Renderable
     {
         //
     }
@@ -69,9 +69,9 @@ class VehicleController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return View
+     * @return Renderable
      */
-    public function edit(int $id): View
+    public function edit(int $id): Renderable
     {
         $item = $this->vehicleService->edit($id);
         return view('vehicles.edit', compact('item'));
