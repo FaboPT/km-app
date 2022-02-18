@@ -30,7 +30,7 @@ class VehicleStoreRequest extends FormRequest
             'model' => 'required | string | max:255',
             'avg_consume' => 'regex:/^\d{1,5}+(\.\d{1,2})?$/ | required ',
             'tank_capacity' => 'required | numeric',
-            'photo' => 'nullable | mimetypes:image/png, image/jpg, image/jpeg | max:2048',
+            'photo' => 'mimetypes:image/png,image/jpg,image/jpeg |nullable | max:2048',
             'url_photo' => 'nullable | url'
         ];
     }
