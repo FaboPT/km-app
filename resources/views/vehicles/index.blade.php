@@ -31,6 +31,7 @@
                     <th>Make</th>
                     <th>Model</th>
                     <th>Avg Consume Per km</th>
+                    <th>Tank Capacity</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -42,6 +43,7 @@
                         <td>{{$item->make ? :''}}</td>
                         <td>{{$item->model ? : ''}}</td>
                         <td>{{$item->avg_consume ? : ''}}</td>
+                        <td>{{$item->tank_capacity ? : ''}}</td>
                         <td>
                             <a href="{{route('vehicles.show',$item->id)}}" data-widget="show" data-toggle="tooltip"
                                title="" data-original-title="Show">
@@ -68,6 +70,7 @@
                     <th>Make</th>
                     <th>Model</th>
                     <th>Avg Consume Per km</th>
+                    <th>Tank Capacity</th>
                     <th>Actions</th>
                 </tr>
                 </tfoot>

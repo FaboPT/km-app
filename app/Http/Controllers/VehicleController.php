@@ -62,7 +62,8 @@ class VehicleController extends Controller
      */
     public function show(int $id): Renderable
     {
-        //
+        $item = $this->vehicleService->find($id);
+        return view('vehicles.show', compact('item'));
     }
 
     /**
@@ -73,7 +74,7 @@ class VehicleController extends Controller
      */
     public function edit(int $id): Renderable
     {
-        $item = $this->vehicleService->edit($id);
+        $item = $this->vehicleService->find($id);
         return view('vehicles.edit', compact('item'));
     }
 
@@ -86,7 +87,11 @@ class VehicleController extends Controller
      */
     public function update(VehicleUpdateRequest $request, int $id): RedirectResponse
     {
-        //
+        if ($request->hasFile('photo') && !$request->url_photo) {
+            $path = $this->vehicleService->pathPhoto($request->photo);
+            $request->merge(['url_photo' => $path]);
+        }
+        return $this->vehicleService->update($id, $request->all());
     }
 
     /**

@@ -56,7 +56,14 @@
             <div class="form-group row">
                 {{Form::label('avg_consume','Avg Consume per km:',['class'=>'col-lg-2 col-form-label'])}}
                 <div class="col-lg-10">
-                    {{Form::number('avg_consume',null, ['class'=>'form-control','placeholder'=>'Avg Consume per km', 'required'])}}
+                    {{Form::text('avg_consume',null, ['class'=>'form-control','placeholder'=>'Avg Consume per km', 'required'])}}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                {{Form::label('tank_capacity','Tank Capacity:',['class'=>'col-lg-2 col-form-label'])}}
+                <div class="col-lg-10">
+                    {{Form::number('tank_capacity',null, ['class'=>'form-control','placeholder'=>'Tank Capacity', 'required'])}}
                 </div>
             </div>
 

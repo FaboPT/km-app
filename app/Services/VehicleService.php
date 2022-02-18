@@ -43,7 +43,11 @@ class VehicleService extends BaseService
      */
     public function update(int $id, array $data): RedirectResponse
     {
-        // TODO: Implement update() method.
+        DB::transaction(function () use (&$id, &$data) {
+            $this->vehicleRepository->update($id, $data);
+        });
+        flash()->success('Vehicle successfully updated')->important();
+        return redirect()->route('vehicles.index');
     }
 
     /**
@@ -57,7 +61,7 @@ class VehicleService extends BaseService
         return true;
     }
 
-    public function edit(int $id): Model
+    public function find(int $id): Model
     {
         return $this->vehicleRepository->find($id);
     }

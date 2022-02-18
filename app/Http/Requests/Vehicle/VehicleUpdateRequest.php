@@ -25,14 +25,13 @@ class VehicleUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'year_date' => 'nullable | | digits:4| integer|min:1900| max:' . (Carbon::now()->year),
-            'make' => 'nullable | string | max:255',
-            'model' => 'nullable | string | max:255',
-            'avg_consume' => 'nullable | regex:/^\d{1,5}+(\.\d{1,2})?$/',
-            'photo' => 'nullable | image',
+            'year_date' => 'required | digits:4| integer|min:1900| max:' . (Carbon::now()->year),
+            'make' => 'required | string | max:255',
+            'model' => 'required | string | max:255',
+            'avg_consume' => 'regex:/^\d{1,5}+(\.\d{1,2})?$/ | required ',
+            'tank_capacity' => 'required | numeric',
+            'photo' => 'nullable | mimetypes:image/png, image/jpg, image/jpeg | max:2048',
             'url_photo' => 'nullable | url'
-
-
         ];
     }
 }

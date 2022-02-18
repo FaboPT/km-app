@@ -55,21 +55,21 @@
             <div class="form-group row">
                 {{Form::label('avg_consume','Avg Consume per km:',['class'=>'col-lg-2 col-form-label'])}}
                 <div class="col-lg-10">
-                    {{Form::number('avg_consume',null, ['class'=>'form-control','placeholder'=>'Avg Consume per km', 'required'])}}
+                    {{Form::text('avg_consume',null, ['class'=>'form-control','placeholder'=>'Avg Consume per km', 'required'])}}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                {{Form::label('tank_capacity','Tank Capacity:',['class'=>'col-lg-2 col-form-label'])}}
+                <div class="col-lg-10">
+                    {{Form::number('tank_capacity',null, ['class'=>'form-control','placeholder'=>'Tank Capacity', 'required'])}}
                 </div>
             </div>
 
             <div class="form-group row">
                 {{Form::label('photo','Photo:',['class'=>'col-lg-2 col-form-label'])}}
                 <div class="col-lg-10">
-                    {{Form::File('photo',['class'=>'form-control','placeholder'=>'Photo'])}}
-                </div>
-            </div>
-
-            <div class="form-group row">
-                {{Form::label('url_photo','Url Photo:',['class'=>'col-lg-2 col-form-label'])}}
-                <div class="col-lg-10">
-                    {{Form::text('url_photo','https://', ['class'=>'form-control'])}}
+                    {{Form::file('photo',['class'=>'form-control','placeholder'=>'Photo'])}}
                 </div>
             </div>
 
