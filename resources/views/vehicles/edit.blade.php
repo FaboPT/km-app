@@ -11,12 +11,7 @@
             </ul>
         </div>
     @endif
-    {{ Form::model($item, [
-                 'route'=>['vehicles.update',$item->id],
-                 'method'=>'PUT',
-                 'accept-charset'=>'UTF-8',
-                 'class'=>'form-horizontal'
-         ])}}
+    {!! Html::form()->method('PUT')->action(route('vehicles.update', $item->id))->class('form-horizontal')->open() !!}
 
 
     <div class="row">
@@ -33,51 +28,51 @@
     <div class="card">
         <div class="card-body">
             <div class="form-group row">
-                {{Form::label('year_date','Year:',['class'=>'col-lg-2 col-form-label'])}}
+                {!! Html::label('Year:', 'year_date')->class('col-lg-2 col-form-label') !!}
                 <div class="col-lg-10">
-                    {{Form::text('year_date',null, ['class'=>'form-control','placeholder'=>'Year', 'required'])}}
+                    {!! Html::text('year_date', $item->year_date)->class('form-control')->placeholder('Year')->required() !!}
                 </div>
             </div>
 
             <div class="form-group row">
-                {{Form::label('make','Make:',['class'=>'col-lg-2 col-form-label'])}}
+                {!! Html::label('Make:', 'make')->class('col-lg-2 col-form-label') !!}
                 <div class="col-lg-10">
-                    {{Form::text('make',null, ['class'=>'form-control','placeholder'=>'Make', 'required'])}}
-                </div>
-            </div>
-            <div class="form-group row">
-                {{Form::label('model','Model:',['class'=>'col-lg-2 col-form-label'])}}
-                <div class="col-lg-10">
-                    {{Form::text('model',null, ['class'=>'form-control','placeholder'=>'Model', 'required'])}}
+                    {!! Html::text('make', $item->make)->class('form-control')->placeholder('Make')->required() !!}
                 </div>
             </div>
 
             <div class="form-group row">
-                {{Form::label('avg_consume','Avg Consume per km:',['class'=>'col-lg-2 col-form-label'])}}
+                {!! Html::label('Model:', 'model')->class('col-lg-2 col-form-label') !!}
                 <div class="col-lg-10">
-                    {{Form::text('avg_consume',null, ['class'=>'form-control','placeholder'=>'Avg Consume per km', 'required'])}}
+                    {!! Html::text('model', $item->model)->class('form-control')->placeholder('Model')->required() !!}
                 </div>
             </div>
 
             <div class="form-group row">
-                {{Form::label('tank_capacity','Tank Capacity:',['class'=>'col-lg-2 col-form-label'])}}
+                {!! Html::label('Avg Consume per km:', 'avg_consume')->class('col-lg-2 col-form-label') !!}
                 <div class="col-lg-10">
-                    {{Form::number('tank_capacity',null, ['class'=>'form-control','placeholder'=>'Tank Capacity', 'required'])}}
+                    {!! Html::text('avg_consume', $item->avg_consume)->class('form-control')->placeholder('Avg Consume per km')->required() !!}
                 </div>
             </div>
 
             <div class="form-group row">
-                {{Form::label('photo','Photo:',['class'=>'col-lg-2 col-form-label'])}}
+                {!! Html::label('Tank Capacity:', 'tank_capacity')->class('col-lg-2 col-form-label') !!}
                 <div class="col-lg-10">
-                    {{Form::file('photo',['class'=>'form-control','placeholder'=>'Photo'])}}
+                    {!! Html::number('tank_capacity', $item->tank_capacity)->class('form-control')->placeholder('Tank Capacity')->required() !!}
                 </div>
             </div>
 
-            {{Form::submit(__('vehicles.save'), ['class'=>'btn btn-outline-primary float-right'])}}
+            <div class="form-group row">
+                {!! Html::label('Photo:', 'photo')->class('col-lg-2 col-form-label') !!}
+                <div class="col-lg-10">
+                    {!! Html::file('photo')->class('form-control') !!}
+                </div>
+            </div>
+
+            {!! Html::submit(__('vehicles.save'))->class('btn btn-outline-primary float-right') !!}
         </div>
     </div>
-    {{ Form::close()}}
+    </form>
 
 
 @stop
-

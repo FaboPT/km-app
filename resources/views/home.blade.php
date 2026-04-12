@@ -3,30 +3,30 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            {!! Form::open(['route' => 'search', 'method' => 'POST','id'=>'calculate-results']) !!}
+            {!! Html::form()->method('POST')->action(route('search'))->id('calculate-results')->open() !!}
             <div class="card">
                 <div class="card-body">
                     <div class="form-group row">
-                        {{Form::label('vehicle_id','Vehicle:',['class'=>'col-lg-2 col-form-label'])}}
+                        {!! Html::label('Vehicle:', 'vehicle_id')->class('col-lg-2 col-form-label') !!}
                         <div class="col-lg-10">
-                            {{Form::select('vehicle_id',[null=>null]+$vehicles,null,['class'=>'form-control select2', 'required', 'data-placeholder'=>'Select an a vehicle'])}}
+                            {!! Html::select('vehicle_id', ['' => ''] + $vehicles)->class('form-control select2')->required()->attribute('data-placeholder', 'Select an a vehicle') !!}
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                {{Form::label('pointALatitude','Departure latitude:',['class'=>'col-lg-4 col-form-label'])}}
+                                {!! Html::label('Departure latitude:', 'pointALatitude')->class('col-lg-4 col-form-label') !!}
                                 <div class="col-lg-8">
-                                    {{Form::text('pointALatitude',null,['class'=>'form-control', 'required', 'placeholder'=>'Departure latitude'])}}
+                                    {!! Html::text('pointALatitude')->class('form-control')->required()->placeholder('Departure latitude') !!}
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group row">
-                                {{Form::label('pointA','Departure longitude :',['class'=>'col-lg-4 col-form-label'])}}
+                                {!! Html::label('Departure longitude :', 'pointA')->class('col-lg-4 col-form-label') !!}
                                 <div class="col-lg-8">
-                                    {{Form::text('pointALongitude',null,['class'=>'form-control', 'required', 'placeholder'=>'Departure longitude'])}}
+                                    {!! Html::text('pointALongitude')->class('form-control')->required()->placeholder('Departure longitude') !!}
                                 </div>
                             </div>
                         </div>
@@ -35,17 +35,17 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                {{Form::label('pointBLatitude','Arrival latitude:',['class'=>'col-lg-4 col-form-label'])}}
+                                {!! Html::label('Arrival latitude:', 'pointBLatitude')->class('col-lg-4 col-form-label') !!}
                                 <div class="col-lg-8">
-                                    {{Form::text('pointBLatitude',null,['class'=>'form-control', 'required', 'placeholder'=>'Arrival latitude'])}}
+                                    {!! Html::text('pointBLatitude')->class('form-control')->required()->placeholder('Arrival latitude') !!}
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group row">
-                                {{Form::label('pointBLongitude','Arrival longitude :',['class'=>'col-lg-4 col-form-label'])}}
+                                {!! Html::label('Arrival longitude :', 'pointBLongitude')->class('col-lg-4 col-form-label') !!}
                                 <div class="col-lg-8">
-                                    {{Form::text('pointBLongitude',null,['class'=>'form-control', 'required', 'placeholder'=>'Arrival longitude'])}}
+                                    {!! Html::text('pointBLongitude')->class('form-control')->required()->placeholder('Arrival longitude') !!}
                                 </div>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            {!! Form::close() !!}
+            </form>
         </div>
     </div>
 
